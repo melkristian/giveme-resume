@@ -1,6 +1,6 @@
 {
-  "name": "resume-api",
-  "description": "This project was bootstrapped with Fastify-CLI.",
+  "name": "giveme-resume",
+  "description": "Simple resume API and generator built with Fastify",
   "version": "1.0.0",
   "main": "app.js",
   "type": "module",
@@ -12,9 +12,13 @@
     "start": "fastify start -o -l info app.js",
     "dev": "fastify start -o -w -l info -P app.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": ["fastify", "node.js", "resume", "generators"],
+  "author": {
+    "name": "Mel Kristian Cruz",
+    "email": "greetings@melkristian.com",
+    "url": "https://melkristian.com"
+  },
+  "license": "MIT",
   "dependencies": {
     "@fastify/autoload": "^5.0.0",
     "@fastify/sensible": "^5.0.0",
@@ -28,5 +32,8 @@
     "@faker-js/faker": "^8.3.1",
     "c8": "^7.13.0",
     "commander": "^11.1.0"
+  },
+  "engines": {
+    "node": ">=18.19.0"
   }
 }
