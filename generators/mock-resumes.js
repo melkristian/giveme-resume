@@ -44,7 +44,7 @@ export function createExperience(numPositions = 1, index = 1, segments = []) {
 
   // Create positions under one company using allotted timeline segments that indicate the start and end dates
   for(let i = 1; i < segments.length; i++){
-    positions.push(createPosition(segments[i], segments[i-1]))
+    positions.push(createPosition(segments[i], segments[i-1], i))
   }
 
   // Optional projects for the whole company
@@ -74,8 +74,9 @@ export function createProject(index = 1) {
   }
 }
 
-export function createPosition(startDate, endDate) {
+export function createPosition(startDate, endDate, index = 1) {
   return {
+    positionId: createRandomId(index),
     title: faker.person.jobTitle(),
     startDate,
     endDate,
