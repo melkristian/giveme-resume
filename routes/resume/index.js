@@ -23,8 +23,7 @@ export default async function (fastify) {
     reply.type('application/json')
     const resume = fastify.db.getOne(request.params.resumeId)
     if(!resume) {
-      reply.code(404)
-      reply.send('Resume ID does not exist.')
+      reply.notFound('Resume ID does not exist.')
     } else {
       reply.send(resume)
     }
