@@ -53,7 +53,7 @@ describe('/resume endpoint', () => {
     assert.ok(validate(parsedResPayload[0]))
   })
 
-  test('/resume/:userId should return a single resume', async (t) => {
+  test('/resume/:resumeId should return a single resume', async (t) => {
     const app = await build(t)
     const resumeId = '603af822738671'
     const res = await app.inject({
@@ -63,5 +63,17 @@ describe('/resume endpoint', () => {
     const data = res.json()
     assert.equal(res.statusCode, 200)
     assert.equal(data?.resumeId, resumeId)
+  })
+
+  test('/resume/:resumeId should return a "Not Found" error if Resume ID does not exist', async (t) => {
+    const app = await build(t)
+    const resumeId = 'not-found-id'
+    const res = await app.inject({
+      method: 'GET',
+      url: `/resume/${resumeId}`
+    })
+    const data = res.json()
+    assert.equal(res.statusCode, 404)
+    assert.equal(data.message, 'Resume ID does not exist.')
   })
 })
